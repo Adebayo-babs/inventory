@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".appFragments.SellFragment">
+
+    <TextView
+        android:id="@+id/sell_page_product_placeholder"
+        style="@style/LargePlaceHolderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/sell_page_dropdown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_margin"
+        app:layout_constraintStart_toEndOf="@id/sell_page_product_placeholder"
+        app:layout_constraintTop_toTopOf="@id/sell_page_product_placeholder"
+        app:layout_constraintBottom_toBottomOf="@id/sell_page_product_placeholder" />
+
+    <TextView
+        android:id="@+id/sell_page_qty_placeholder"
+        style="@style/MediumPlaceHolderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quantity"
+        android:layout_marginTop="@dimen/text_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sell_page_product_placeholder" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sell_page_text_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_margin"
+        android:hint="enter_qty"
+        app:layout_constraintStart_toEndOf="@+id/sell_page_qty_placeholder"
+        app:layout_constraintTop_toTopOf="@id/sell_page_qty_placeholder"
+        app:layout_constraintBottom_toBottomOf="@id/sell_page_qty_placeholder">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sell_page_text_field"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <View
+        android:id="@+id/sell_page_divider"
+        style="@style/Divider"
+        android:layout_width="2dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/text_margin"
+        app:layout_constraintStart_toEndOf="@id/sell_page_text_layout"
+        app:layout_constraintTop_toTopOf="@id/sell_page_text_layout"
+        app:layout_constraintBottom_toBottomOf="@id/sell_page_text_layout" />
+
+    <TextView
+        android:id="@+id/sell_page_product_qty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginStart="@dimen/text_margin"
+        app:layout_constraintStart_toEndOf="@id/sell_page_divider"
+        app:layout_constraintTop_toTopOf="@id/sell_page_divider"
+        app:layout_constraintBottom_toBottomOf="@id/sell_page_divider"
+        tools:text="Qty: 20"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sell_page_add_to_sell"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:text="Add to sell"
+        android:textSize="16sp"
+        app:cornerRadius="@dimen/parent_padding"
+        android:layout_marginTop="@dimen/parent_padding"
+        android:minWidth="@dimen/add_to_sell_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sell_page_qty_placeholder" />
+
+    <TextView
+        android:id="@+id/sell_page_sell_list_subtitle"
+        style="@style/LargePlaceHolderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sell List"
+        android:layout_marginTop="@dimen/between_element"
+        app:layout_constraintTop_toBottomOf="@id/sell_page_add_to_sell"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/sell_page_list_layout"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginTop="@dimen/between_element"
+        android:clipToPadding="true"
+        android:isScrollContainer="true"
+        android:background="@drawable/ic_sell_page_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sell_page_sell_list_subtitle">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sell_page_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layoutManager="LinearLayoutManager"
+            tools:listitem="@layout/fragment_sell_page" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/sell_page_total_price"
+        style="@style/MediumPlaceHolderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/between_element"
+        android:layout_marginEnd="53dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sell_page_list_layout"
+        tools:text="Total price : $2000" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sell_page_sell_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_marginTop="@dimen/text_margin"
+        android:minWidth="@dimen/add_to_sell_btn"
+        android:text="@string/sell"
+        android:textSize="16sp"
+        app:cornerRadius="@dimen/parent_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sell_page_total_price" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
